@@ -5,6 +5,7 @@ project(fortran-result VERSION 0.1.0
 
 # Library Name
 set(TARGET fortran_result)
+set(BINARY test)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 include(cmake/CompilerFlags.cmake)
@@ -16,7 +17,9 @@ set(CMAKE_Fortran_LIB_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 set(default_install_prefix "${PROJECT_BINARY_DIR}/fortran-result-lib")
 
 add_subdirectory(src)
+add_subdirectory(src/test)
 message("${SOURCE_CODE}")
 add_library(${TARGET} SHARED ${SOURCE_CODE})
 add_library(${TARGET}-static STATIC ${SOURCE_CODE})
+add_executable(${BINARY} ${TEST_SRC})
 
